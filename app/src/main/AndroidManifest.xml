@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.pattern">
+
+    <application
+        android:name="com.android.PatternApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@android:style/Theme.Holo.Light">
+        <!-- 跨进程通信 -->
+        <activity android:name=".proxy.aidl.BaiduPushMessageActivity" /> <!-- retrofit -->
+        <activity android:name=".proxy.dynamicproxy.DynamicProxyActivity" />
+        <!-- 静态代理（MVP架构） -->
+        <activity android:name=".proxy.staticproxy.StaticProxyActivity" />
+        <activity android:name="com.android.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- 跨进程通信 -->
+        <service
+            android:name=".proxy.aidl.BaiduPushMessageService"
+            android:process=":proxy.aidl">
+            <intent-filter>
+                <action android:name="com.android.pattern.BaiduPushMessageService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
