@@ -8,7 +8,7 @@ import android.view.View;
 import com.android.common.BinderThreadPool;
 import com.android.common.Log;
 import com.android.pattern.R;
-import com.android.pattern.adaptermediastore.DownloadAndroidQScropedStorage;
+import com.android.pattern.adaptermediastore.DownloadQScopedStorage;
 import com.android.pattern.adaptermediastore.IHandlerFileOnQScopedStorage;
 import com.android.pattern.proxy.aidl.BaiduPushMessageActivity;
 import com.android.pattern.proxy.staticproxy.StaticProxyActivity;
@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         String content = "123456789";
         String fileName = "123.txt";
         Log.d(String.format("将 %s 正在写入文件", content));
-        IHandlerFileOnQScopedStorage storage = new DownloadAndroidQScropedStorage();
+        IHandlerFileOnQScopedStorage storage = new DownloadQScopedStorage();
         storage.writeAndAppend(MainActivity.this, fileName, content);
         content = "abcdefghigklmnopqrstuvwxyz";
         Log.d(String.format("将 %s 正在追加写入文件", content));

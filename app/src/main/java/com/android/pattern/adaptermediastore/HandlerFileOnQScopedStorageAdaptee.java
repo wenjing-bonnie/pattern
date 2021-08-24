@@ -28,7 +28,7 @@ import java.nio.charset.StandardCharsets;
  *
  * @author wenjing.liu
  */
-public abstract class AndroidQScopedStorageAdaptee {
+public abstract class HandlerFileOnQScopedStorageAdaptee {
 
     /**
      * 当{@link Environment#getExternalStorageState()}是{@link Environment#MEDIA_MOUNTED}的时候返回external content uri
@@ -65,7 +65,7 @@ public abstract class AndroidQScopedStorageAdaptee {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             writeAndAppendAboveQWithoutWritePermission(context, fileName, content);
         } else {
-            writeAndAppendByFile(context, fileName, content);
+            writeAndAppendByFile(fileName, content);
         }
     }
 
@@ -76,7 +76,7 @@ public abstract class AndroidQScopedStorageAdaptee {
      * @param fileName
      * @param content
      */
-    private synchronized void writeAndAppendByFile(Context context, String fileName, String content) {
+    private synchronized void writeAndAppendByFile(String fileName, String content) {
         try {
             File srcFile = getSrcFile(fileName);
             writeOutputStreamOfUtf8(new FileOutputStream(srcFile, true), content);

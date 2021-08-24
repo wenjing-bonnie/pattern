@@ -15,7 +15,7 @@ import androidx.annotation.RequiresApi;
  *
  * @author wenjing.liu
  */
-public class DownloadAndroidQScropedStorage extends AndroidQScopedStorageAdaptee implements IHandlerFileOnQScopedStorage {
+public class DownloadQScopedStorage extends HandlerFileOnQScopedStorageAdaptee implements IHandlerFileOnQScopedStorage {
 
     @Override
     public String getExternalStoragePublicDirectoryType() {
