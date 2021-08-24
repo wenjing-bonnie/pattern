@@ -17,4 +17,10 @@
         android:onClick="baiduService"
         android:text="跨进程通信" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="adapterMediaStore"
+        android:text="适配器模式" />
+
 </LinearLayout>
