@@ -15,7 +15,7 @@ import androidx.annotation.RequiresApi;
  *
  * @author wenjing.liu
  */
-public class DownloadQScopedStorage extends HandlerFileOnQScopedStorageAdaptee implements IHandlerFileOnQScopedStorage {
+public class DownloadsHandlerOnQScopedStorage extends AbsHandlerOnQScopedStorage {
 
     @Override
     public String getExternalStoragePublicDirectoryType() {
@@ -32,10 +32,5 @@ public class DownloadQScopedStorage extends HandlerFileOnQScopedStorageAdaptee i
     @RequiresApi(Build.VERSION_CODES.Q)
     public Uri getInternalContentUri() {
         return MediaStore.Downloads.INTERNAL_CONTENT_URI;
-    }
-
-    @Override
-    public void writeAndAppend(Context context, String fileName, String content) {
-        writeAndAppendFileForAllSdk(context, fileName, content);
     }
 }

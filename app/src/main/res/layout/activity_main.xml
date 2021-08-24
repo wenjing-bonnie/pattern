@@ -23,4 +23,9 @@
         android:onClick="adapterMediaStore"
         android:text="适配器模式" />
 
+    <ImageView
+        android:id="@+id/iv_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
