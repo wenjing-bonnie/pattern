@@ -12,4 +12,5 @@ public interface IDifferenceTypeOnQScopedStorage {
     void writeAndAppend(Context context, String fileName, byte[] content);
 
     Object read(Context context, String fileName);
+
 }

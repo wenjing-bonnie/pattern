@@ -90,7 +90,8 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
         return null;
     }
 
-//    private Object readByFile(String fileName) {
+
+    //    private Object readByFile(String fileName) {
 //        File srcFile = getSrcFile(fileName);
 //        return readInputStream(new FileInputStream(srcFile));
 //    }
