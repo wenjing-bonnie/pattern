@@ -2,19 +2,14 @@ package com.android;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.android.common.BinderThreadPool;
-import com.android.common.Log;
 import com.android.pattern.R;
-import com.android.pattern.adaptermediastore.DownloadsHandlerOnQScopedStorage;
-import com.android.pattern.adaptermediastore.AbsHandlerOnQScopedStorage;
-import com.android.pattern.adaptermediastore.ImageHandlerOnQScopedStorage;
 import com.android.pattern.proxy.aidl.BaiduPushMessageActivity;
 import com.android.pattern.proxy.staticproxy.StaticProxyActivity;
+import com.android.pattern.qstorage.QStorageActivity;
 
 public class MainActivity extends Activity {
 
@@ -35,19 +30,12 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+
     public void adapterMediaStore(View view) {
-        String content = "123456789";
-        String fileName = "log.txt";
-        Log.d(String.format("将 %s 正在写入文件", content));
-        AbsHandlerOnQScopedStorage storage = new DownloadsHandlerOnQScopedStorage();
-       // storage.writeAndAppend(MainActivity.this, fileName, content.getBytes());
-        //content = "abcdefghigklmnopqrstuvwxyz";
-        //Log.d(String.format("将 %s 正在追加写入文件", content));
-        //storage.writeAndAppend(MainActivity.this, fileName, content.getBytes());
-storage.getAllUris(MainActivity.this);
-        String info = (String) storage.read(MainActivity.this, fileName);
-        Log.d(String.format("读出的文件信息如下  %s ", info));
+        Intent intent = new Intent(MainActivity.this, QStorageActivity.class);
+        startActivity(intent);
     }
+
 
     @Override
     protected void onPause() {
