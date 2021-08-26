@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.android.common.Log;
 import com.android.pattern.R;
 
+
 public class QStorageActivity extends Activity {
     private Context context;
     private ImageView ivImage;
