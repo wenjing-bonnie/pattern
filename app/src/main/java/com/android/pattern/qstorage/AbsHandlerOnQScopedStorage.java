@@ -90,6 +90,30 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
         return null;
     }
 
+    @Override
+    public void delete(Context context, String fileName) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            deleteAboveRWithoutReadPermission(context, fileName);
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void deleteAboveRWithoutReadPermission(Context context, String fileName) {
+        AndroidQFileInfo info = getUriByTitle(context, fileName);
+        if (info == null) {
+            return;
+        }
+        Uri uri = info.uri;
+        if (uri == null) {
+            return;
+        }
+        try {
+            context.getContentResolver().delete(uri, null);
+        } catch (RecoverableSecurityException e) {
+            handlerRecoverableSecurityException(context, e);
+        }
+    }
 
     //    private Object readByFile(String fileName) {
 //        File srcFile = getSrcFile(fileName);

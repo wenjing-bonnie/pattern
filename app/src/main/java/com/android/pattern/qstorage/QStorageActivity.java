@@ -27,7 +27,8 @@ public class QStorageActivity extends Activity {
     public void btnReadAndWrite(View view) {
         checkReadPermission();
         writeAndWriteMediaStore();
-        writeImageStorage();
+       // writeImageStorage();
+        deleteImageStorage();
     }
 
     private void writeAndWriteMediaStore() {
@@ -49,11 +50,20 @@ public class QStorageActivity extends Activity {
     private void writeImageStorage() {
         AbsHandlerOnQScopedStorage scopedStorage = new ImageHandlerOnQScopedStorage();
         scopedStorage.getAllUris(context);
-        String fileName = "downloadfile.jpg";
+        String fileName = "www.sina.jpg";
         scopedStorage.writeAndAppend(context, fileName, "12".getBytes());
         Bitmap bitmap = (Bitmap) scopedStorage.read(context, fileName);
-        Log.d("height = " + bitmap.getHeight());
-        ivImage.setImageBitmap(bitmap);
+        //必须有权限才可以读出该图片
+        if (bitmap != null) {
+            Log.d("height = " + bitmap.getHeight());
+            ivImage.setImageBitmap(bitmap);
+        }
+    }
+
+    private void deleteImageStorage() {
+        AbsHandlerOnQScopedStorage scopedStorage = new ImageHandlerOnQScopedStorage();
+        String fileName = "downloadfile1.jpg";
+        scopedStorage.delete(context, fileName);
     }
 
     private void checkReadPermission() {

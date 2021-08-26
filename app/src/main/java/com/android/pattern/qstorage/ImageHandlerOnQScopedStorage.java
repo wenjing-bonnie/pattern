@@ -11,7 +11,7 @@ import androidx.annotation.RequiresApi;
 /**
  * Created by wenjing.liu on 2021/8/24 .
  * <p>
- * 存储在/storage/emulated/0/Pictures的文件进行读写
+ * 当用户授权READ_EXTERNAL_STORAGE就可以对手机上的图片文件进行读写
  *
  * @author wenjing.liu
  */
