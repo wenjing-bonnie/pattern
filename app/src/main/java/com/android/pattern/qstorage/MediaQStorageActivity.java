@@ -32,10 +32,9 @@ public class MediaQStorageActivity extends Activity {
 
     public void btnReadAndWrite(View view) {
         String content = "123456789";
-        String fileName = "1235669.txt";
+        String fileName = "980.txt";
         Log.d(String.format("将 %s 正在写入文件", content));
         AbsHandlerOnQScopedStorage storage = new DownloadsHandlerOnQScopedStorage();
-        //AbsHandlerOnQScopedStorage storage = new FileHandlerOnQScopedStorage();
         Log.v(" ===  写入之前   === ");
         storage.getAllUris(context);
         storage.writeAndAppend(context, fileName, content.getBytes());
