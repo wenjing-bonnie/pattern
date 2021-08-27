@@ -23,11 +23,4 @@
         android:onClick="btnCreateFile"
         android:text="新建文件" />
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnDeleteFile"
-        android:text="针对文件进行增删改" />
-
 </LinearLayout>

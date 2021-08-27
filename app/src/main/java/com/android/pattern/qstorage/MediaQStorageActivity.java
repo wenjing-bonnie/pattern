@@ -6,12 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.android.common.Log;
 import com.android.pattern.R;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * create by wenjing.liu on 2021/08/27
@@ -77,5 +84,20 @@ public class MediaQStorageActivity extends Activity {
         if (this.checkSelfPermission(read) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(permissions, 1);
         }
+    }
+
+    // TODO 这个还没有验证成功
+    public void btnCreateWDeleteRequest(View view) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            return;
+        }
+        AbsHandlerOnQScopedStorage storage = new DownloadsHandlerOnQScopedStorage();
+        Log.v(" ===  写入之前   === ");
+        List<AbsHandlerOnQScopedStorage.AndroidQFileInfo> infos = storage.getAllUris(context);
+        Collection<Uri> uris = new ArrayList<Uri>();
+        for (AbsHandlerOnQScopedStorage.AndroidQFileInfo file : infos) {
+            uris.add(file.uri);
+        }
+        MediaStore.createTrashRequest(context.getContentResolver(), uris, true);
     }
 }

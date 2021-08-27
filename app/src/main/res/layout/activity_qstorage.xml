@@ -28,6 +28,12 @@
         android:onClick="btnCheckReadPermission"
         android:text="点击读文件权限" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnCreateWDeleteRequest"
+        android:text="验证11的文件组授权" />
+
     <ImageView
         android:id="@+id/iv_img"
         android:layout_width="wrap_content"

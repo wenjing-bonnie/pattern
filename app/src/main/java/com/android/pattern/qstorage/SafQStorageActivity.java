@@ -75,9 +75,6 @@ public class SafQStorageActivity extends Activity {
         startActivityForResult(intent, CODE_ACTION_CREATE_DOCUMENT);
     }
 
-    public void btnDeleteFile(View view) {
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -90,6 +87,7 @@ public class SafQStorageActivity extends Activity {
             case CODE_ACTION_CREATE_DOCUMENT: {
                 Uri uri = data.getData();
                 writeText(uri);
+                // writeImage(uri);
                 break;
             }
             case CODE_ACTION_OPEN_DOCUMENT_TREE: {
@@ -129,9 +127,6 @@ public class SafQStorageActivity extends Activity {
         for (DocumentFile doc : documentFile.listFiles()) {
             //writeText(doc.getUri());
             // deleteFile(doc.getUri());
-            List uris = new ArrayList<Uri>();
-            Collection collection = new ArrayList(Arrays.asList(uris));
-            //  createWDeleteRequest(collection);
         }
     }
 
@@ -144,9 +139,4 @@ public class SafQStorageActivity extends Activity {
     }
 
 
-    private void createWDeleteRequest(Collection<Uri> uris) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            MediaStore.createTrashRequest(context.getContentResolver(), uris, false);
-        }
-    }
 }
