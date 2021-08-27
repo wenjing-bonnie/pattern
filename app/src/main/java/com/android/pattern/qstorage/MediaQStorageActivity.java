@@ -13,7 +13,11 @@ import android.widget.ImageView;
 import com.android.common.Log;
 import com.android.pattern.R;
 
-
+/**
+ * create by wenjing.liu on 2021/08/27
+ * 使用MediaStore对多媒体文件的读写操作
+ * TODO 注意里面的文件名字都是我的手机上的文件，需要自行修改
+ */
 public class MediaQStorageActivity extends Activity {
     private Context context;
     private ImageView ivImage;
@@ -27,19 +31,6 @@ public class MediaQStorageActivity extends Activity {
     }
 
     public void btnReadAndWrite(View view) {
-        checkReadPermission();
-        writeAndWriteMediaStore();
-        writeImageStorage();
-        deleteImageStorage();
-    }
-
-    public void btnReadAndWriteNot(View view) {
-        Intent intent = new Intent(context, NotMediaQStorageActivity.class);
-        startActivity(intent);
-    }
-
-    private void writeAndWriteMediaStore() {
-
         String content = "123456789";
         String fileName = "1235669.txt";
         Log.d(String.format("将 %s 正在写入文件", content));
@@ -54,7 +45,12 @@ public class MediaQStorageActivity extends Activity {
         Log.d(String.format("读出的文件信息如下  %s ", info));
     }
 
-    private void writeImageStorage() {
+    public void btnReadAndWriteNot(View view) {
+        Intent intent = new Intent(context, SafQStorageActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnWriteImageStorage(View view) {
         AbsHandlerOnQScopedStorage scopedStorage = new ImageHandlerOnQScopedStorage();
         scopedStorage.getAllUris(context);
         //String fileName = "www.sina.jpg"; //android10 模拟器中的图片
@@ -68,13 +64,13 @@ public class MediaQStorageActivity extends Activity {
         }
     }
 
-    private void deleteImageStorage() {
+    public void btnDeleteImageStorage(View view) {
         AbsHandlerOnQScopedStorage scopedStorage = new ImageHandlerOnQScopedStorage();
         String fileName = "downloadfile1.jpg";
         scopedStorage.delete(context, fileName);
     }
 
-    private void checkReadPermission() {
+    public void btnCheckReadPermission(View view) {
         String read = Manifest.permission.READ_EXTERNAL_STORAGE;
 
         String[] permissions = new String[]{read};

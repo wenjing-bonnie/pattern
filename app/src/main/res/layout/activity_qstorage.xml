@@ -8,13 +8,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="btnReadAndWrite"
-        android:text="点击获取多媒体文件的信息" />
+        android:text="点击创建和写txt文件" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="非多媒体文件操作"
-        android:onClick="btnReadAndWriteNot"/>
+        android:onClick="btnWriteImageStorage"
+        android:text="点击写和获取image文件" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnWriteImageStorage"
+        android:text="点击写和获取image文件" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnDeleteImageStorage"
+        android:text="删除文件" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnCheckReadPermission"
+        android:text="点击读文件权限" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
+        android:onClick="btnReadAndWriteNot"
+        android:text="进入非多媒体文件操作" />
+
 
     <ImageView
         android:id="@+id/iv_img"
