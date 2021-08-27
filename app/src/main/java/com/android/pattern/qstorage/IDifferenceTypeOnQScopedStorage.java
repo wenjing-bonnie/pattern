@@ -17,6 +17,7 @@ public interface IDifferenceTypeOnQScopedStorage {
      */
     void writeAndAppend(Context context, String fileName, byte[] content);
 
+
     /**
      * 读取文件中的内容
      *

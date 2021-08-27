@@ -9,7 +9,7 @@ import com.android.common.BinderThreadPool;
 import com.android.pattern.R;
 import com.android.pattern.proxy.aidl.BaiduPushMessageActivity;
 import com.android.pattern.proxy.staticproxy.StaticProxyActivity;
-import com.android.pattern.qstorage.QStorageActivity;
+import com.android.pattern.qstorage.MediaQStorageActivity;
 
 public class MainActivity extends Activity {
 
@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 
 
     public void adapterMediaStore(View view) {
-        Intent intent = new Intent(MainActivity.this, QStorageActivity.class);
+        Intent intent = new Intent(MainActivity.this, MediaQStorageActivity.class);
         startActivity(intent);
     }
 

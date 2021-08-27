@@ -3,6 +3,7 @@ package com.android.pattern.qstorage;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,14 +14,14 @@ import com.android.common.Log;
 import com.android.pattern.R;
 
 
-public class QStorageActivity extends Activity {
+public class MediaQStorageActivity extends Activity {
     private Context context;
     private ImageView ivImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = QStorageActivity.this;
+        context = MediaQStorageActivity.this;
         setContentView(R.layout.activity_qstorage);
         ivImage = findViewById(R.id.iv_img);
     }
@@ -28,8 +29,13 @@ public class QStorageActivity extends Activity {
     public void btnReadAndWrite(View view) {
         checkReadPermission();
         writeAndWriteMediaStore();
-       // writeImageStorage();
+        writeImageStorage();
         deleteImageStorage();
+    }
+
+    public void btnReadAndWriteNot(View view) {
+        Intent intent = new Intent(context, NotMediaQStorageActivity.class);
+        startActivity(intent);
     }
 
     private void writeAndWriteMediaStore() {
@@ -51,7 +57,8 @@ public class QStorageActivity extends Activity {
     private void writeImageStorage() {
         AbsHandlerOnQScopedStorage scopedStorage = new ImageHandlerOnQScopedStorage();
         scopedStorage.getAllUris(context);
-        String fileName = "www.sina.jpg";
+        //String fileName = "www.sina.jpg"; //android10 模拟器中的图片
+        String fileName = "IMG_20210826_103025.jpg"; //android10 模拟器中的图片
         scopedStorage.writeAndAppend(context, fileName, "12".getBytes());
         Bitmap bitmap = (Bitmap) scopedStorage.read(context, fileName);
         //必须有权限才可以读出该图片

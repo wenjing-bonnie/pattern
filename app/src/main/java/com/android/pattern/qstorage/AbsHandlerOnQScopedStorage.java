@@ -82,10 +82,23 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
         }
     }
 
+    public void writeAndAppend(Context context, Uri uri, byte[] content) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            writeAndAppendAboveQByUri(context, uri, content);
+        }
+    }
+
     @Override
     public Object read(Context context, String fileName) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             return readAboveQWithoutReadPermission(context, fileName);
+        }
+        return null;
+    }
+
+    public Object read(Context context, Uri uri) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return readAboveQByUri(context, uri);
         }
         return null;
     }
@@ -164,6 +177,36 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
         return null;
     }
 
+
+    private Object readAboveQByUri(Context context, Uri uri) {
+        InputStream is = null;
+        try {
+            is = context.getContentResolver().openInputStream(uri);
+            if (is == null) {
+                return null;
+            }
+            //文本类型
+            // if (info.mineType.startsWith("text")) {
+            return readForTextAboveQWithoutReadPermission(is);
+            //  } else if (info.mineType.startsWith("image")) {
+            //     return readForImageAboveQWithoutReadPermission(is);
+            //}
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+
+        return null;
+    }
+
+
     /**
      * 读取文本类型的文档内容
      *
@@ -221,12 +264,14 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
      * @param fileName
      */
     @RequiresApi(Build.VERSION_CODES.Q)
-    private synchronized void writeAndAppendAboveQWithoutWritePermission(Context context, String fileName, byte[] content) {
-        ContentResolver resolver = context.getContentResolver();
+    private void writeAndAppendAboveQWithoutWritePermission(Context context, String fileName, byte[] content) {
         Uri uri = getUriByTitle(context, fileName).uri;
-        if (uri == null) {
-            return;
-        }
+        writeAndAppendAboveQByUri(context, uri, content);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private synchronized void writeAndAppendAboveQByUri(Context context, Uri uri, byte[] content) {
+        ContentResolver resolver = context.getContentResolver();
         try {
             writeOutputStreamOfUtf8(resolver.openOutputStream(uri, "wa"), content);
         } catch (FileNotFoundException e) {
@@ -234,6 +279,8 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
         } catch (RecoverableSecurityException e) {
             //修改其他应用创建的多媒体文件会抛出该异常
             handlerRecoverableSecurityException(context, e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -367,7 +414,11 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
             return null;
         }
         Uri uri = getContentUriByStorageState();
+        return getAllUris(context, uri);
+    }
 
+    public List<AndroidQFileInfo> getAllUris(Context context, Uri uri) {
+        List<AndroidQFileInfo> infos = new ArrayList<>();
         String[] projection = new String[]{MediaStore.MediaColumns._ID,
                 MediaStore.MediaColumns.TITLE,
                 MediaStore.MediaColumns.DISPLAY_NAME,
@@ -390,6 +441,7 @@ public abstract class AbsHandlerOnQScopedStorage implements IDifferenceTypeOnQSc
 
         return infos;
     }
+
 
     /**
      * 暂时不用每个子类分别去设置mineType,还是借用系统保存文件的时候设置的mineType
