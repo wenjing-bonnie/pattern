@@ -12,7 +12,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@android:style/Theme.Holo.Light">
-        <activity android:name=".qstorage.SafQStorageActivity"></activity>
+        <activity android:name=".chain.fakebusiness.AppLauncherChainActivity"></activity>
+        <activity android:name=".chain.fakebusiness.DownloadActivity" />
+        <activity android:name=".chain.okhttp.OkHttpActivity" />
+        <activity android:name=".qstorage.SafQStorageActivity" />
         <activity android:name=".qstorage.MediaQStorageActivity" /> <!-- 跨进程通信 -->
         <activity android:name=".proxy.aidl.BaiduPushMessageActivity" /> <!-- retrofit -->
         <activity android:name=".proxy.dynamicproxy.DynamicProxyActivity" /> <!-- 静态代理（MVP架构） -->

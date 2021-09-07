@@ -9,16 +9,16 @@ import com.android.pattern.decoratoractivitylifecycle.ActivityManagerOnALCallbac
 import com.android.pattern.decoratoractivitylifecycle.ApplicationLifecycleCallbacksConcreteComponent;
 
 /**
- * Created by wenjing.liu on 2021/5/12 in J1.
+ * Created by wenjing.liu on 2021/5/12 .
  *
  * @author wenjing.liu
  */
 public class PatternApplication extends Application implements ApplicationLifecycleCallbacksConcreteComponent.IApplicationLifecycle {
-
     /**
      * application实例
      */
     private static PatternApplication sInstance;
+    // ==== 装饰者模式decoratoractivitylifecycle中添加的内容 ====
     /**
      * 为app 打点增加的前一个页面的标识：为"下一个页面的类名_事件"，若有事件，则赋值为事件对应的字符串，若无事件，则""即可
      */
@@ -26,8 +26,16 @@ public class PatternApplication extends Application implements ApplicationLifecy
     /**
      * 生命周期监听
      */
-
     private ActivityManagerOnALCallbacksConcreteDecorator activityManagerOnALCallbacksConcreteDecorator;
+    // ==== 责任链模式chain中添加的内容:true:已经显示过了;false:还没有显示过 ====
+    /**
+     * 是否显示过AlertMessageAdvert
+     */
+    public boolean isShowedAlertMessageAdvert;
+    public boolean isShowedCloseTypeAdvert;
+    public boolean isShowedFullScreenAdvert;
+    public boolean isShowedDownloadNewVersion;
+    public boolean isShowedPrivateConfirm;
 
     public static synchronized PatternApplication getInstance() {
         //理论上该值不会为null

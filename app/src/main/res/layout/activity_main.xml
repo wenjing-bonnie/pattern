@@ -23,6 +23,12 @@
         android:onClick="adapterMediaStore"
         android:text="适配器AndroidQ及以上" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btnChain"
+        android:text="责任链模式" />
+
     <ImageView
         android:id="@+id/iv_test"
         android:layout_width="wrap_content"

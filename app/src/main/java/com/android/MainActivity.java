@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.android.common.BinderThreadPool;
 import com.android.pattern.R;
+import com.android.pattern.chain.fakebusiness.AppLauncherChainActivity;
 import com.android.pattern.proxy.aidl.BaiduPushMessageActivity;
 import com.android.pattern.proxy.staticproxy.StaticProxyActivity;
 import com.android.pattern.qstorage.MediaQStorageActivity;
@@ -36,6 +37,10 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void btnChain(View view) {
+        Intent intent = new Intent(MainActivity.this, AppLauncherChainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onPause() {
