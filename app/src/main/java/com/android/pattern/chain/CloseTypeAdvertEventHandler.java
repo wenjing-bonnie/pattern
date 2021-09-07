@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 
 import com.android.PatternApplication;
 import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
+import com.android.pattern.template.AppLauncherToNextEventHandler;
 
 /**
  * Created by wenjing.liu on 2021/9/3.
@@ -15,7 +16,7 @@ import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
 public class CloseTypeAdvertEventHandler extends AppLauncherToNextEventHandler {
 
     @Override
-    protected void handlerSelfAppLauncherEvent(Activity context) {
+    public void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedCloseTypeAdvert = true;
         FakeBusinessDialogUtils.showFakeBusinessDialog(context, " CloseTypeAdvert", "正在显示一个半屏广告", new DialogInterface.OnDismissListener() {
             @Override

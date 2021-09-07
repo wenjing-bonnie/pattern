@@ -1,8 +1,9 @@
-package com.android.pattern.chain;
+package com.android.pattern.template;
 
 import android.app.Activity;
 
 import com.android.common.Log;
+import com.android.pattern.chain.AppLauncherEventHandler;
 
 
 /**
@@ -16,7 +17,8 @@ import com.android.common.Log;
 public abstract class AppLauncherToNextEventHandler extends AppLauncherEventHandler {
 
     @Override
-    protected void handlerAppLauncherEvent(Activity context) {
+    //模版方法
+    final public void handlerAppLauncherEvent(Activity context) {
         //符合该条件的直接交给该Handler进行处理
         if (isSelfAppLauncherEventHandler(context)) {
             Log.v(String.format("~~~~~~~~~~~~ 进入到 \"%s\" 处理逻辑", getClass().getSimpleName()));
@@ -31,6 +33,7 @@ public abstract class AppLauncherToNextEventHandler extends AppLauncherEventHand
     /**
      * 显示本Handler处理的广告逻辑
      */
-    protected abstract void handlerSelfAppLauncherEvent(Activity context);
+    //基本方法
+    public abstract void handlerSelfAppLauncherEvent(Activity context);
 
 }

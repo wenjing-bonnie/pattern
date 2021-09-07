@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 
 import com.android.PatternApplication;
 import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
+import com.android.pattern.template.AppLauncherToNextEventHandler;
 
 /**
  * Created by wenjing.liu on 2021/9/3 .

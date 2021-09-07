@@ -27,7 +27,7 @@ public class OkHttpActivity extends Activity {
     public void btnOkHttp(View view) {
 
         Request request = new Request.Builder()
-                .url("https://mp.csdn.net/")
+                .url("https://www.baidu.com/")
                 .get()
                 .build();
 

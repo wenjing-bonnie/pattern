@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 
 import com.android.PatternApplication;
 import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
+import com.android.pattern.template.AppLauncherToNextEventHandler;
 
 /**
  * Created by wenjing.liu on 2021/9/3 in J1.
@@ -16,7 +17,7 @@ import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
 public class FullScreenTypeAdvertEventHandler extends AppLauncherToNextEventHandler {
 
     @Override
-    protected void handlerSelfAppLauncherEvent(Activity context) {
+    public void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedFullScreenAdvert = true;
         FakeBusinessDialogUtils.showFakeBusinessDialog(context, "FullScreenAdvert", "正在显示一个全屏广告", new DialogInterface.OnDismissListener() {
             @Override

@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.android.PatternApplication;
 import com.android.pattern.chain.fakebusiness.DownloadActivity;
+import com.android.pattern.template.AppLauncherToNextEventHandler;
 
 /**
  * Created by wenjing.liu on 2021/9/3 .
@@ -16,7 +17,7 @@ import com.android.pattern.chain.fakebusiness.DownloadActivity;
 public class DownloadNewVersionEventHandler extends AppLauncherToNextEventHandler {
 
     @Override
-    protected void handlerSelfAppLauncherEvent(Activity context) {
+    public void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedDownloadNewVersion = true;
         Intent intent = new Intent(context, DownloadActivity.class);
         context.startActivity(intent);

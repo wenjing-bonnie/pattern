@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 
 import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
+import com.android.pattern.template.AppLauncherToNextEventHandler;
 
 /**
  * Created by wenjing.liu on 2021/9/3.
@@ -14,7 +15,7 @@ import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
 public class CheckNotificationEventHandler extends AppLauncherToNextEventHandler {
 
     @Override
-    protected void handlerSelfAppLauncherEvent(Activity context) {
+    public void handlerSelfAppLauncherEvent(Activity context) {
         FakeBusinessDialogUtils.showFakeBusinessDialog(context, " CheckNotification", "正在显示提示用户打开通知对话框", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {

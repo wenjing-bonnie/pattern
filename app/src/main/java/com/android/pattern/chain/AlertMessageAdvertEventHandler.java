@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 
 import com.android.PatternApplication;
 import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
+import com.android.pattern.template.AppLauncherToNextEventHandler;
 
 /**
  * Created by wenjing.liu on 2021/9/3 .
@@ -15,7 +16,7 @@ import com.android.pattern.chain.fakebusiness.FakeBusinessDialogUtils;
  */
 public class AlertMessageAdvertEventHandler extends AppLauncherToNextEventHandler {
     @Override
-    protected void handlerSelfAppLauncherEvent(Activity context) {
+    public void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedAlertMessageAdvert = true;
         FakeBusinessDialogUtils.showFakeBusinessDialog(context, "AlertMessageAdvert", "正在显示一个对话框形式的广告", new DialogInterface.OnDismissListener() {
             @Override
