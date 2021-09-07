@@ -16,12 +16,7 @@ public class FakeBusinessDialogUtils {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
         builder.setMessage(message);
-//        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//
-//            }
-//        })
+        builder.setPositiveButton(android.R.string.ok, null);
         AlertDialog fakeDialog = builder.create();
         if (listener != null) {
             fakeDialog.setOnDismissListener(listener);

@@ -17,7 +17,7 @@ public class AlertMessageAdvertEventHandler extends AppLauncherToNextEventHandle
     @Override
     protected void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedAlertMessageAdvert = true;
-        FakeBusinessDialogUtils.showFakeBusinessDialog(context, "AlertMessageAdvert", "正在显示一个AlertMessageAdvert", new DialogInterface.OnDismissListener() {
+        FakeBusinessDialogUtils.showFakeBusinessDialog(context, "AlertMessageAdvert", "正在显示一个对话框形式的广告", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 goToNextAppLauncherEventHandler(context);

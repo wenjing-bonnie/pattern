@@ -17,7 +17,7 @@ public class PrivateConfirmEventHandler extends AppLauncherToNextEventHandler {
     @Override
     public void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedPrivateConfirm = true;
-        FakeBusinessDialogUtils.showFakeBusinessDialog(context, "PrivateConfirm", "正在显示一个PrivateConfirm", new DialogInterface.OnDismissListener() {
+        FakeBusinessDialogUtils.showFakeBusinessDialog(context, "PrivateConfirm", "正在显示一个提示用户同意隐私权限", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 goToNextAppLauncherEventHandler(context);

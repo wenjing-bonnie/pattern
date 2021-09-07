@@ -3,10 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="模拟接口请求结束之后,启动责任链"
-        android:onClick="btnStartChain"/>
+        android:onClick="btnStartChain"
+        android:text="模拟接口请求结束之后,启动责任链" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnRestartApp"
+        android:text="模拟重启APP之后的效果" />
 
 </LinearLayout>

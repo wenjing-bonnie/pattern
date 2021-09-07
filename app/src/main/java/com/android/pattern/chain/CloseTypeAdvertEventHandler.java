@@ -17,7 +17,7 @@ public class CloseTypeAdvertEventHandler extends AppLauncherToNextEventHandler {
     @Override
     protected void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedCloseTypeAdvert = true;
-        FakeBusinessDialogUtils.showFakeBusinessDialog(context, " CloseTypeAdvert", "正在显示半屏广告对话框", new DialogInterface.OnDismissListener() {
+        FakeBusinessDialogUtils.showFakeBusinessDialog(context, " CloseTypeAdvert", "正在显示一个半屏广告", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 goToNextAppLauncherEventHandler(context);

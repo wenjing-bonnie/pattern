@@ -18,7 +18,7 @@ public class FullScreenTypeAdvertEventHandler extends AppLauncherToNextEventHand
     @Override
     protected void handlerSelfAppLauncherEvent(Activity context) {
         PatternApplication.getInstance().isShowedFullScreenAdvert = true;
-        FakeBusinessDialogUtils.showFakeBusinessDialog(context, "FullScreenAdvert", "正在显示一个FullScreenAdvert", new DialogInterface.OnDismissListener() {
+        FakeBusinessDialogUtils.showFakeBusinessDialog(context, "FullScreenAdvert", "正在显示一个全屏广告", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 goToNextAppLauncherEventHandler(context);

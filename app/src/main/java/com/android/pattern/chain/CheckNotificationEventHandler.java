@@ -15,7 +15,7 @@ public class CheckNotificationEventHandler extends AppLauncherToNextEventHandler
 
     @Override
     protected void handlerSelfAppLauncherEvent(Activity context) {
-        FakeBusinessDialogUtils.showFakeBusinessDialog(context, " CheckNotification", "提示用户打开通知对话框", new DialogInterface.OnDismissListener() {
+        FakeBusinessDialogUtils.showFakeBusinessDialog(context, " CheckNotification", "正在显示提示用户打开通知对话框", new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 goToNextAppLauncherEventHandler(context);
