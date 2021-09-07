@@ -1,5 +1,6 @@
 package com.android.pattern.chain.fakebusiness;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import com.android.PatternApplication;
 import com.android.common.BaseActivity;
 import com.android.pattern.R;
 import com.android.pattern.chain.AppLauncherChain;
+import com.android.pattern.chain.okhttp.OkHttpActivity;
 
 public class AppLauncherChainActivity extends BaseActivity {
     private AppLauncherChain appLauncherChain;
@@ -30,5 +32,10 @@ public class AppLauncherChainActivity extends BaseActivity {
         PatternApplication.getInstance().isShowedAlertMessageAdvert = false;
         appLauncherChain.startAppLauncherChain(AppLauncherChainActivity.this);
 
+    }
+
+    public void btnStartOkHttp(View view) {
+        Intent intent = new Intent(AppLauncherChainActivity.this, OkHttpActivity.class);
+        startActivity(intent);
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.common.Log;
 import com.android.pattern.R;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class OkHttpActivity extends Activity {
     }
 
 
-    public void btnOkHttp(View view){
+    public void btnOkHttp(View view) {
 
         Request request = new Request.Builder()
                 .url("https://mp.csdn.net/")
@@ -32,7 +33,7 @@ public class OkHttpActivity extends Activity {
 
         OkHttpClient client = new OkHttpClient();
         Call call = client.newCall(request);
-        call.enqueue(new Callback(){
+        call.enqueue(new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -41,6 +42,7 @@ public class OkHttpActivity extends Activity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                Log.d("msg = " + response.message());
 
             }
         });

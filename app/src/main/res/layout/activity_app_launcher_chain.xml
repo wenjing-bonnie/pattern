@@ -16,4 +16,10 @@
         android:onClick="btnRestartApp"
         android:text="模拟重启APP之后的效果" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnStartOkHttp"
+        android:text="OkHttp中的设计模式"/>
+
 </LinearLayout>
