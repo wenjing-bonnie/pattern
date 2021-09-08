@@ -30,8 +30,9 @@ public class OkHttpActivity extends Activity {
                 .url("https://www.baidu.com/")
                 .get()
                 .build();
-
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        clientBuilder.addInterceptor(new LogInterceptor());
+        OkHttpClient client = clientBuilder.build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
 
@@ -42,11 +43,9 @@ public class OkHttpActivity extends Activity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("msg = " + response.message());
+                Log.d("msg = " + response.message() + " \n body = " + response.body().source().readUtf8());
 
             }
         });
-
-
     }
 }
